@@ -25,8 +25,27 @@ They are collectively referred to as ["Vanilla JS"](http://vanilla-js.com/), in 
 * **[jQuery](https://jquery.com/)**: jQuery was created as a response to a huge problem at the time, namely the discrepancy between JavaScript implementations in browsers. It provided a unified API to access the DOM, events, AJAX and more without having to worry about browser differences.
 * **[React](https://facebook.github.io/react/)**: React is a user interface library that was created as a response to the difficulty of managing big browser-based applications using the primitive Vanilla JS functions. It turns out that manipulating the DOM directly using the `document` object is error prone at scale, and becomes quickly unmanageable. React tries to solve this problem in a *declarative manner*, "similar to SQL". Rather than calling DOM functions to manipulate the content of a page, React allows us to define user interface components in a declarative way, and automatically takes care of calling the appropriate DOM functions. The similarity to SQL lies in the fact that we never have to tell an SQL database *how* we want things to be computed, but simply what to compute. Think of it as the difference between `ORDER BY createdAt DESC` and `data.sort(function(a, b) {...})`.
 
+## Projects
 Before learning any of these libraries, we will work on getting familiar with Vanilla JavaScript. Since everything is built on top of it, it will pay off to know how it works. In order to do this, we will be building three front-end projects that run completely in the browser. In these projects, our web server's only role will be to produce a static `index.html` file that contains a `<script>` tag *where everything will happen*. One implication of this is that search engine crawlers like Google Bot will not be able to view the content of our applications, since *everything will happen after the page has loaded*, long after the HTTP request/response cycle has ended.
 
-We will start by building a first project together. It will be a simple weather application that asks the user for their city, and dynamically displays a weather box with the current temperature, basic weather conditions as well as an icon representing the current state of things.
+### Weather application
+We will start by building a first project **together**. It will be a simple weather application that asks the user for their city, and dynamically displays a weather box with the current temperature, basic weather conditions as well as an icon representing the current state of things.
 
-Next, you will use the same techniques to build up to two more projects: a Flickr photo browser and a custom Reddit browser.
+### Flickr browser
+Even though Flickr already has an excellent web app to browse photos, we will use the Flickr API to create an infinitely scrolling browser based on a search word.
+
+### Custom Reddit browser
+In week two, you built a [command-line Reddit browser](https://github.com/DecodeMTL/reddit-cli-project) using the Reddit JSON API. Here we will use the same API through AJAX and the DOM in order to create a simple but custom browser-based reddit app.
+
+----------
+## Project 1: Weather App
+TODO
+
+----------
+## Project 2: Flickr Browser
+TODO
+
+----------
+## Project 3: Custom Reddit Browser
+TODO
+
