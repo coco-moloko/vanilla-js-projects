@@ -31,6 +31,11 @@ They are collectively referred to as ["Vanilla JS"](http://vanilla-js.com/), in 
 Before learning any of these libraries, we will work on getting familiar with Vanilla JavaScript. Since everything is built on top of it, it will pay off to know how it works. In order to do this, we will be building three front-end projects that run completely in the browser. In these projects, our web server's only role will be to produce a static `index.html` file that contains a `<script>` tag *where everything will happen*. One implication of this is that search engine crawlers like Google Bot will not be able to view the content of our applications, since *everything will happen after the page has loaded*, long after the HTTP request/response cycle has ended.
 
 ### Weather application
+
+<p align="center">
+![Weather App](weather-app-demo.gif)
+</p>
+
 We will start by building a first project **together**. It will be a simple weather application that asks the user for their city, and dynamically displays a weather box with the current temperature, basic weather conditions as well as an icon representing the current state of things.
 
 ### Flickr browser
@@ -276,7 +281,9 @@ Then, refresh the page in your browser and try clicking in different places. Cli
 
 With one click, up to four event handlers are getting called starting from the element that was clicked and bubbling up to the body. At any point in time, we can call the event object's `stopPropagation` method to stop this bubbling. Try adding `event.stopPropagation()` in the different event handlers, and observe the result in your browser.
 
-![DOM event bubbling](event-bubbling.png)
+<p align="center">
+![Event Bubbling](event-bubbling.png)
+</p>
 
 #### Event delegation :warning:
 This topic is extremely important and you should understand it well before moving on. Let's look at an example by writing the following code inside the #app div of our HTML:
@@ -306,6 +313,8 @@ Array.prototype.forEach.call(listItems, function(listItem) {
   });
 });
 ```
+
+*`NodeList` actually has a `forEach` method but it's not the same as arrays. It doesn't however have `map` or `filter` or any of the other useful array methods.*
 
 Try running your code in the browser to show yourself that it works. Even though this code works, there are mainly two things that are wrong with it:
 
@@ -449,9 +458,11 @@ fetch('https://www.reddit.com/r/montreal.json')
 Try it again by refreshing the browser. As you can imagine, this AJAX code could be executed as a result of an event, a timer or anything else that you can implement using JavaScript.
 
 ### "Conclusion"
-By marrying events, AJAX calls and DOM manipulation we can build fully functioning web applications that run in the browser. We'll do that in the next section by building three small web applications. One of the things that we'll see while doing this is that directly using the DOM can be quite cumbersome, and managing the state of our application can quickly get out of hand. Next week, we'll start looking at how to solve some of these problems in a declarative way using the [React UI library built by Facebook](https://facebook.github.io/react/).
+By marrying events, AJAX calls and DOM manipulation we can build fully functioning web applications that run in the browser. We'll do that in the next section by building three small web applications. One of the things that we'll see while doing this is that directly using the DOM can be quite cumbersome, and managing the state of our application can quickly get out of hand. Next week, we'll start looking at how to solve some of those problems in a declarative way using the [React UI library built by Facebook](https://facebook.github.io/react/).
 
 ---
 
 ## Project #1: Weather App
 TODO
+
+---
