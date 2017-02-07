@@ -444,6 +444,7 @@ Try it again by refreshing the browser. As you can imagine, this AJAX code could
 
 ### "Conclusion"
 By marrying events, AJAX calls and DOM manipulation we can build fully functioning web applications that run in the browser. We'll do that in the next section by building three small web applications. One of the things that we'll see while doing this is that directly using the DOM can be quite cumbersome, and managing the state of our application can quickly get out of hand. Next week, we'll start looking at how to solve some of these problems in a declarative way using the [React UI library built by Facebook](https://facebook.github.io/react/).
+
 ---
 
 ## Project #1: Weather App
