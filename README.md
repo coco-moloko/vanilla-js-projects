@@ -276,6 +276,8 @@ Then, refresh the page in your browser and try clicking in different places. Cli
 
 With one click, up to four event handlers are getting called starting from the element that was clicked and bubbling up to the body. At any point in time, we can call the event object's `stopPropagation` method to stop this bubbling. Try adding `event.stopPropagation()` in the different event handlers, and observe the result in your browser.
 
+![DOM event bubbling](event-bubbling.png)
+
 #### Event delegation :warning:
 This topic is extremely important and you should understand it well before moving on. Let's look at an example by writing the following code inside the #app div of our HTML:
 
