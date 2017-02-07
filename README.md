@@ -33,7 +33,7 @@ Before learning any of these libraries, we will work on getting familiar with Va
 ### Weather application
 
 <p align="center">
-![Weather App](weather-app-demo.gif)
+  <img src="weather-app-demo.gif">
 </p>
 
 We will start by building a first project **together**. It will be a simple weather application that asks the user for their city, and dynamically displays a weather box with the current temperature, basic weather conditions as well as an icon representing the current state of things.
@@ -282,7 +282,7 @@ Then, refresh the page in your browser and try clicking in different places. Cli
 With one click, up to four event handlers are getting called starting from the element that was clicked and bubbling up to the body. At any point in time, we can call the event object's `stopPropagation` method to stop this bubbling. Try adding `event.stopPropagation()` in the different event handlers, and observe the result in your browser.
 
 <p align="center">
-![Event Bubbling](event-bubbling.png)
+  <img src="event-bubbling.png">
 </p>
 
 #### Event delegation :warning:
