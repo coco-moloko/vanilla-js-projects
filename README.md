@@ -369,7 +369,11 @@ fetch('http://www.rbcroyalbank.com')
 });
 ```
 
-Try refreshing the browser and look at your Console tab. What's that? An error! What the browser is telling us here is that we're not allowed to see the response from the Royal Bank site. Since this request is running in the context of our web browser, this makes a LOT of sense. Because such a request would have access to our cookies, seeing the response could allow us to retrieve some sensitive information from anyone who loads up our web page in *their* browser.
+Try refreshing the browser and look at your Console tab.
+
+![CORS error](cors-error.png)
+
+What's that? An error! What the browser is telling us here is that we're not allowed to see the response from the Royal Bank site. Since this request is running in the context of our web browser, this makes a LOT of sense. Because such a request would have access to our cookies, seeing the response could allow us to retrieve some sensitive information from anyone who loads up our web page in *their* browser.
 
 Imagine that we were allowed to see the content of this 3rd party site. Here's a hand-waving example of what we could do:
 
