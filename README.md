@@ -5,7 +5,7 @@ During the first four weeks of the bootcamp, we learned how to code with JavaScr
 
 Before that time, web browsers were quite dumber than they are now. A browser would receive an HTML page from a web server -- either dynamically created or as a static file -- and [render the page](http://www.pathinteractive.com/blog/design-development/rendering-a-webpage-with-google-webmaster-tools/), making additional requests for every `<img>` element therein. After rendering a page, the possible interactions were limited:
 
-* The user clicks on an `<a>` (anchor) element on the page, making the browser issue a **`GET`** request to the URL specified in the `href` attribute of the anchor, effectively loading another page
+* The user clicks on an `A` (anchor) element on the page, making the browser issue a **`GET`** request to the URL specified in the `href` attribute of the anchor, effectively loading another page
 * The user fills out a `<form>` and submits it, making the browser issue either a **`GET`** or **`POST`** request -- depending on the `method` attribute of the `<form>` -- to the URL specified in the `action` attribute of the form. This would also result in another page load.
 
 *(This method of creating web sites and rendering them is exactly how you built your [Reddit Clone Project](https://github.com/DecodeMTL/node-express-reddit-clone), using NodeJS, Express and Pug on the server side. In this model, the browser did very little.)*
@@ -215,7 +215,7 @@ theButton.addEventListener('click', function() {
 Try running this code in the browser, and after pressing the button the event listening should stop.
 
 #### Default event behaviors
-Some events have a default behavior attached to them. For example when you click on an `<a>` element, the browser will load its `href` property, effectively leaving the current page. This default behavior can be prevented by accessing the event object and calling its `preventDefault` method. When an event handler gets called, it receives the event object as its first argument. Let's see how that works...
+Some events have a default behavior attached to them. For example when you click on an `A` element, the browser will load its `href` property, effectively leaving the current page. This default behavior can be prevented by accessing the event object and calling its `preventDefault` method. When an event handler gets called, it receives the event object as its first argument. Let's see how that works...
 
 Clear the content of the #app div in your HTML, and change `app.js` to the following code:
 
@@ -293,7 +293,7 @@ This topic is extremely important and you should understand it well before movin
 Then, let's try to attach an event handler to each list item, and print its inner text when it is clicked:
 
 ```javascript
-var listItems = document.querySelectorAll('#theList li'); // Select all the <li>s inside #theList
+var listItems = document.querySelectorAll('#theList li'); // Select all the LIs inside #theList
 
 // It turns out that querySelectorAll does NOT return an array, but an array-like object called a NodeList
 // Here's one way we can iterate over the NodeList items, using the Array prototype
@@ -307,7 +307,7 @@ Array.prototype.forEach.call(listItems, function(listItem) {
 
 Try running your code in the browser to show yourself that it works. Even though this code works, there are mainly two things that are wrong with it:
 
-1. If we dynamically add new <li>s to the UL after setting up the event listeners, clicking them will do nothing -- ask yourself why
+1. If we dynamically add new LIs to the UL after setting up the event listeners, clicking them will do nothing -- ask yourself why
 2. Setting up multiple event handlers can be extremely resource intensive, and we can do much better! Imagine an image gallery with 100s of images... One event handler per image will simply not cut it.
 
 It's not by accident that we looked at event propagation in the last section. Using the propagation, we can solve these two issues in one shot. First off though, write the following code in your developer tools Console:
@@ -320,7 +320,7 @@ newItem.innerText = 'Sixth list item';
 theList.appendChild(newItem);
 ```
 
-Then try clicking on the sixth <li> that was added dynamically and prove to yourself that nothing happens. Now let's fix it!
+Then try clicking on the sixth LI that was added dynamically and prove to yourself that nothing happens. Now let's fix it!
 
 Change the code of `app.js` to the following:
 
@@ -330,15 +330,15 @@ var theList = document.querySelector('#theList');
 theList.addEventListener('click', function(event) {
   // While `this` represents the #theList element, event has a property called `target` which represents the actual originator of the event. We can use this to our advantage!
 
-  // First, check if the target is an <li> that is a direct child of the list:
+  // First, check if the target is an LI that is a direct child of the list:
   if (event.target.parentNode === theList) {
-    // We definitely clicked on an <li>
+    // We definitely clicked on an LI
     console.log('You clicked on: ' + event.target.innerText);
   }
 });
 ```
 
-With this code in place, we should get the same initial behavior as the previous code. One advantage is that we only have a single event handler, no matter how many <li>s. Now try running the following code in your console:
+With this code in place, we should get the same initial behavior as the previous code. One advantage is that we only have a single event handler, no matter how many LIs. Now try running the following code in your console:
 
 ```javascript
 var theList = document.querySelector('#theList');
@@ -348,7 +348,7 @@ newItem.innerText = 'Sixth list item';
 theList.appendChild(newItem);
 ```
 
-Then try clicking on the sixth <li> and notice the difference. It gets console.logged! This is event delegation in a nutshell, and you should use it wherever you can. This is also a great transition for the next section where we will learn about AJAX. Making HTTP requests in the context of a web page will often result in adding new elements dynamically. Setting up event delegation will enable us to listen to clicks on those new elements without having to manually attach event handlers to each one of them :)
+Then try clicking on the sixth LI and notice the difference. It gets console.logged! This is event delegation in a nutshell, and you should use it wherever you can. This is also a great transition for the next section where we will learn about AJAX. Making HTTP requests in the context of a web page will often result in adding new elements dynamically. Setting up event delegation will enable us to listen to clicks on those new elements without having to manually attach event handlers to each one of them :)
 
 ### Making HTTP requests
 TODO
