@@ -801,7 +801,7 @@ It's your turn now! Based on what you learned while doing the previous project, 
   </a>
   ```
 
-In order to create such elements, it would help to have a helper function called `createFlickrThumb` that returns an `<a>` element, like this:
+  In order to create such elements, it would help to have a helper function called `createFlickrThumb` that returns an `<a>` element, like this:
 
   ```javascript
   function createFlickrThumb(photoData) {
