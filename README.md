@@ -39,10 +39,20 @@ Before learning any of these libraries, we will work on getting familiar with Va
 We will start by building a first project **together**. It will be a simple weather application that asks the user for their city, and dynamically displays a weather box with the current temperature, basic weather conditions as well as an icon representing the current state of things.
 
 ### Flickr browser
+
+<p align="center">
+  <img src="flickr-api-project.gif">
+</p>
+
 Even though Flickr already has an excellent web app to browse photos, we will use the Flickr API to create an infinitely scrolling browser based on a search word.
 
-### Custom Reddit browser
-In week two, you built a [command-line Reddit browser](https://github.com/DecodeMTL/reddit-cli-project) using the Reddit JSON API. Here we will use the same API through AJAX and the DOM in order to create a simple but custom browser-based reddit app.
+### BlackJack game
+
+<p align="center">
+  <img src="blackjack.gif"/>
+</p>
+
+This one is a bit extreme, but we're giving you quite a bit of code to help you. Make sure to personalize it so it doesn't look too generic ;)
 
 ---
 
@@ -782,7 +792,38 @@ It's your turn now! Based on what you learned while doing the previous project, 
 
 3. Read the documentation on [how to build URLs for Flickr images](https://www.flickr.com/services/api/misc.urls.html)
 
-TODO: complete this section...
+4. Write a function called `getPhotosForSearch` that takes a search term and returns an array of photo objects. You'll have to transform the Flickr response quite a bit. Ideally you will return an array of objects, with each object having `thumb`, `large`  and `title` properties. These properties should be URLs built using the documentation in step 3.
+5. Wire up a search form submit event to start the search using the word(s) in the form input. When receiving the results, clear a pre-existing container div and put the results in there. Each result should have this shape:
+
+  ```html
+  <a href="URL OF THE LARGE IMAGE" target="_blank">
+    <img src="URL OF THE THUMBNAIL" alt="TITLE OF THE IMAGE">
+  </a>
+  ```
+
+In order to create such elements, it would help to have a helper function called `createFlickrThumb` that returns an `<a>` element, like this:
+
+  ```javascript
+  function createFlickrThumb(photoData) {
+    var link = document.createElement('a');
+    link.setAttribute('href', photoData.large);
+    link.setAttribute('target', '_blank');
+
+    var image = document.createElement('img');
+    image.setAttribute('src', photoData.thumb);
+    image.setAttribute('alt', photoData.title);
+
+    link.appendChild(image);
+
+    return link;
+  }
+  ```
+
+6. Once the basics are working, it's time to add some improvements!!
+  * Make the gallery look nice with CSS
+  * Make the gallery responsive using a block grid
+  * Instead of linking to each image, prevent the click and display a popup image with an X
+  * Infinite scroll! Using `window.addEventListener('scroll')`, try to figure out when the scrolling has reached the bottom of the page, and start loading the next page of results.
 
 ---
 
