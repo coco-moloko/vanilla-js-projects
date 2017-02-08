@@ -1,5 +1,9 @@
 # Vanilla JavaScript Projects :coffee:
 
+<p align="center">
+  <img src="http://i.imgur.com/14kW76S.jpg">
+</p>
+
 ## Introduction
 During the first four weeks of the bootcamp, we learned how to code with JavaScript using the NodeJS platform. But as you probably know, [JavaScript's beginnings were in the browser, in 1995](https://en.wikipedia.org/wiki/JavaScript#Beginnings_at_Netscape). At that time, personal computers were starting to become more powerful and there was a realization that **the web needed to become more dynamic**.
 
