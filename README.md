@@ -770,11 +770,15 @@ It's your turn now! Based on what you learned while doing the previous project, 
   <img src="flickr-api-project.gif">
 </p>
 
-1. Get an API key [here](https://www.flickr.com/services/api/misc.api_keys.html). You'll have to get a Yahoo account... (yes, we know)
+1. Get an API key [here](https://www.flickr.com/services/api/misc.api_keys.html). You'll have to get a Yahoo account... (yes, we know). For this app, you only need the key and not the secret.
 
-![Flickr API Key](flickr-api-key.png) only need the key not the secret for this app
+  ![Flickr API Key](flickr-api-key.png)
 
 2. Read the documentation for the [Flickr Search API](https://www.flickr.com/services/api/flickr.photos.search.html). Even though it mentions XML results, you can get JSON back by using this URL format:
+
+  ```
+  https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=YOUR_API_KEY&text=THE_SEARCH_TEXT
+  ```
 
 3. Read the documentation on [how to build URLs for Flickr images](https://www.flickr.com/services/api/misc.urls.html)
 
