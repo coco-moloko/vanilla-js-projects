@@ -763,17 +763,34 @@ As discussed in class, if you want to use this project for your portfolio you ca
 
 ---
 
-## Project #3:
-## Vanilla BlackJack
+## Project #2: Flickr API Photo Browser
+It's your turn now! Based on what you learned while doing the previous project, you will build a Flickr Photo Browser! Here's an example of what a super basic version of the browser will look. If you want to use this as part of your portfolio, you should definitely follow some of the improvements that we suggest ;)
+
+<p align="center">
+  <img src="flickr-api-project.gif">
+</p>
+
+1. Get an API key [here](https://www.flickr.com/services/api/misc.api_keys.html). You'll have to get a Yahoo account... (yes, we know)
+
+![Flickr API Key](flickr-api-key.png) only need the key not the secret for this app
+
+2. Read the documentation for the [Flickr Search API](https://www.flickr.com/services/api/flickr.photos.search.html). Even though it mentions XML results, you can get JSON back by using this URL format:
+
+3. Read the documentation on [how to build URLs for Flickr images](https://www.flickr.com/services/api/misc.urls.html)
+
+TODO: complete this section...
 
 ---
+
+## Project #3: Vanilla BlackJack
+
 ### Introduction
 * In this workshop you will be using the elegant [DeckOfCardsApi](http://deckofcardsapi.com/) in order to build your own game of BlackJack.
 
 * Once complete, your game will look something like the picture below, at which point you will be able to customize and skin it to your own liking by adding onto index.html and styles.css.
 
 <p align="center">
-  <img src="./blackjack.gif"/>
+  <img src="blackjack.gif"/>
 </p>
 
 * You are provided with 3 files:
@@ -1110,15 +1127,14 @@ function dealerPlays() {
 
 ```
 
----
 ### Hiding the dealer's first card
 
 Now that the game is running smoothly, we need to hide the dealer's first card in order for this to be REAL blackjack. Use this image and modify your app.js to hide the dealer's first card until it is his turn to play.
+
 <p align="center">
-  <img src="./card.png">
+  <img src="card.png">
 </p>
 
----
 ### Challenge!
 
 Now that your game is running smoothly, here are your options for challenges on this project:
